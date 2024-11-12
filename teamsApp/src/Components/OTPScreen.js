@@ -8,8 +8,8 @@ const colors = {
     primary: '#007BFF',
     secondary: '#4CAF50',
     white: '#fff',
-    heading:'#22577a',
-    subheading:'#55a630',
+    heading: '#22577a',
+    subheading: '#55a630',
 };
 
 const OTPScreen = ({ route, navigation }) => {
@@ -26,7 +26,7 @@ const OTPScreen = ({ route, navigation }) => {
         const interval = setInterval(() => {
             setTimer((prev) => prev - 1);
         }, 1000);
-        
+
         // Clear interval when the component is unmounted
         return () => clearInterval(interval);
     }, []);
@@ -53,6 +53,10 @@ const OTPScreen = ({ route, navigation }) => {
         if (otp[index] === '' && index > 0) {
             inputRefs.current[index - 1].focus();
         }
+    };
+
+    const handlePreviousPress = () => {
+        navigation.navigate('Start');
     };
 
     const handleVerify = () => {
@@ -112,10 +116,16 @@ const OTPScreen = ({ route, navigation }) => {
                         Didn’t receive OTP? Re-send in {timer}s
                     </Text>
                 </TouchableOpacity>
+                <CustomButton
+                    title="Previous"
+                    onPress={handlePreviousPress}
+                    style={styles.previousButton}
+                />
 
                 <CustomButton
                     title="Verify OTP"
                     onPress={handleVerify}
+                    style={styles.nextButton}
                 />
             </SafeAreaView>
         </ImageBackground>
@@ -141,10 +151,15 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         padding: 16,
     },
-    heading: {        
+    heading: {
         color: colors.heading,
         fontSize: 24,
         fontWeight: 'bold',
+    },
+    nextButton: {
+        bottom: 20,  // Set the button 20 units from the bottom
+        position: 'absolute',
+        right: 20,   // Position the "Next" button on the right
     },
     otpContainer: {
         flexDirection: 'row',
@@ -157,6 +172,11 @@ const styles = StyleSheet.create({
         marginHorizontal: 5,
         textAlign: 'center',
         width: 40,
+    },
+    previousButton: {
+        bottom: 20,  // Set the button 20 units from the bottom
+        left: 20,    // Position the "Previous" button on the left
+        position: 'absolute',
     },
     resendButton: {
         marginBottom: 20,

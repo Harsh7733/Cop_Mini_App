@@ -9,20 +9,21 @@ const COLORS = {
     border: '#70e000',   // Border color
 };
 
-const CustomButton = ({ title, onPress }) => {
+const CustomButton = ({ title, onPress, style }) => {
     return (
-        <View style={styles.buttonContainer}>
+        <View style={[styles.buttonContainer, style]}>
             <TouchableOpacity style={styles.button} onPress={onPress}>
                 <Text style={styles.buttonText}>{title}</Text>
             </TouchableOpacity>
         </View>
-    );    
+    );
 };
 
 CustomButton.propTypes = {
     title: PropTypes.string.isRequired,
     onPress: PropTypes.func.isRequired, // onPress must be passed and should be a function
-  };
+    style: PropTypes.object,  // Accept additional styles
+};
 
 const styles = StyleSheet.create({
     button: {
@@ -30,15 +31,14 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.primary, // Use the primary color for the button background
         borderColor: COLORS.border,      // Border color set to green
         borderRadius: 13,                // Rounded corners for the button
-        borderWidth: 4,                  // Border width of 5
+        borderWidth: 4,                  // Border width of 4
         justifyContent: 'center',
         paddingHorizontal: 24,           // Horizontal padding inside the button
         paddingVertical: 12,             // Vertical padding inside the button
     },
     buttonContainer: {
         marginTop: 20,
-        paddingHorizontal: 16,
-        width: '100%',
+        // paddingHorizontal: 16,
     },
     buttonText: {
         color: COLORS.white, // White color for the text

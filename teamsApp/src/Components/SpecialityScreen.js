@@ -71,10 +71,19 @@ const SpecialityScreen = ({ navigation }) => {
                     <Text style={styles.addText}>+ Add Specialisation</Text>
                 </TouchableOpacity>
 
-                <CustomButton
-                    title="Next"
-                    onPress={() => navigation.navigate('BrandName')}
-                />
+                <View style={styles.buttonContainer}>
+                    <CustomButton
+                        title="Previous"
+                        onPress={() => navigation.navigate('Start')}
+                        style={styles.previousButton}
+                    />
+
+                    <CustomButton
+                        title="Next"
+                        onPress={() => navigation.navigate('BrandName')}
+                        style={styles.nextButton}
+                    />
+                </View>
             </View>
 
             {/* Modal for adding new speciality */}
@@ -123,10 +132,21 @@ const styles = StyleSheet.create({
         backgroundColor: colors.addButton,
         borderRadius: 5,
         color: colors.addButton,
+        marginBottom: 20, // Adds some space between the button and the specialty list
         marginTop: 20,
         padding: 10,
     },
     addText: { color: colors.addText },
+    buttonContainer: {
+        bottom: 20, // Ensure buttons are placed at the bottom
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        left: 0,
+        paddingHorizontal: 20,
+        position: 'absolute',
+        right: 0,
+        width: '100%',
+    },
     cancelButton: { backgroundColor: colors.lightGrey },
     container: { alignItems: 'center', flex: 1, justifyContent: 'center', padding: 20 },
     heading: { color: colors.heading, fontSize: 24, fontWeight: 'bold', marginBottom: 10 },
@@ -162,8 +182,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     modalTitle: { fontSize: 20, fontWeight: 'bold', marginBottom: 15 },
-    saveButton: { backgroundColor: colors.addButton },
-    selected: { backgroundColor: colors.selectedColor }, // Changed this to backgroundColor for selection
+    nextButton: {
+        marginTop: 20, // Adds space between the buttons
+    },
+    previousButton: {
+        marginTop: 20, // Adds space between the buttons
+    },
+    selected: { backgroundColor: colors.selectedColor },
     specialityItem: {
         alignItems: 'center',
         backgroundColor: colors.white,
