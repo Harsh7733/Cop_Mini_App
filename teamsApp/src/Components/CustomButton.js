@@ -16,13 +16,13 @@ const CustomButton = ({ title, onPress }) => {
                 <Text style={styles.buttonText}>{title}</Text>
             </TouchableOpacity>
         </View>
-    );
+    );    
 };
 
 CustomButton.propTypes = {
     title: PropTypes.string.isRequired,
-    onPress: PropTypes.func.isRequired,
-};
+    onPress: PropTypes.func.isRequired, // onPress must be passed and should be a function
+  };
 
 const styles = StyleSheet.create({
     button: {

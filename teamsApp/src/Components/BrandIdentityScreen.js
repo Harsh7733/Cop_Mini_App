@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, TextInput,  Text, View, ImageBackground } from 'react-native';
+import { StyleSheet, TextInput, Text, View, ImageBackground } from 'react-native';
+import PropTypes from 'prop-types';
 import CustomButton from './CustomButton';
 
 const colors = {
@@ -10,12 +11,16 @@ const colors = {
 
 };
 
-const BrandIdentityScreen = () => {
+const BrandIdentityScreen = ({navigation}) => {
     const [identity, setIdentity] = useState('');
 
     const handleDone = () => {
-        // Do something when the user clicks "Done"
+        navigation.navigate('Diagnosis');
         console.log('Online identity created:', identity);
+    };
+
+    BrandIdentityScreen.propTypes = {
+        navigation: PropTypes.object.isRequired,
     };
 
     return (

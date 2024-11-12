@@ -17,21 +17,25 @@ const OTPScreen = ({ route, navigation }) => {
     const [otp, setOtp] = useState(Array(6).fill(''));
     const [timer, setTimer] = useState(30);
     const [isResendDisabled, setIsResendDisabled] = useState(true);
-    const [hasInvalidOtp, setHasInvalidOtp] = useState(false);  // Track if OTP is invalid
 
     // Create refs for each OTP input field
     const inputRefs = useRef([]);
 
+    // Start the timer immediately when the screen loads
     useEffect(() => {
-        if (timer > 0 && hasInvalidOtp) {  // Only start the timer if OTP is invalid
-            const interval = setInterval(() => {
-                setTimer((prev) => prev - 1);
-            }, 1000);
-            return () => clearInterval(interval);
-        } else if (timer === 0) {
-            setIsResendDisabled(false);
+        const interval = setInterval(() => {
+            setTimer((prev) => prev - 1);
+        }, 1000);
+        
+        // Clear interval when the component is unmounted
+        return () => clearInterval(interval);
+    }, []);
+
+    useEffect(() => {
+        if (timer === 0) {
+            setIsResendDisabled(false); // Enable resend button when timer reaches 0
         }
-    }, [timer, hasInvalidOtp]);
+    }, [timer]);
 
     const handleOtpChange = (value, index) => {
         const newOtp = [...otp];
@@ -54,11 +58,9 @@ const OTPScreen = ({ route, navigation }) => {
     const handleVerify = () => {
         const otpEntered = otp.join('');
         if (otpEntered === '123456') {
-            setHasInvalidOtp(false); // Reset invalid OTP state if OTP is valid
             navigation.navigate('Speciality');
         } else {
             alert('Invalid OTP!');
-            setHasInvalidOtp(true);  // Mark OTP as invalid and start the timer
             setTimer(30);  // Restart the timer after invalid OTP
             setIsResendDisabled(true);  // Disable resend button
         }
@@ -67,7 +69,6 @@ const OTPScreen = ({ route, navigation }) => {
     const handleResend = () => {
         setTimer(30);  // Restart the timer
         setIsResendDisabled(true);  // Disable resend button while timer runs
-        setHasInvalidOtp(false);  // Reset invalid OTP state
         alert('OTP has been resent!');
     };
 
@@ -121,13 +122,6 @@ const OTPScreen = ({ route, navigation }) => {
     );
 };
 
-
-OTPScreen.propTypes = {
-    navigation: PropTypes.object.isRequired,
-};
-
-
-// PropTypes validation
 OTPScreen.propTypes = {
     route: PropTypes.shape({
         params: PropTypes.shape({

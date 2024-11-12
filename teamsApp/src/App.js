@@ -9,6 +9,8 @@ import OTPScreen from './Components/OTPScreen';
 import SpecialityScreen from './Components/SpecialityScreen';
 import BrandNameScreen from './Components/BrandNameScreen';
 import BrandIdentityScreen from './Components/BrandIdentityScreen';
+import DiagnosisScreen from './Components/DiagnosisScreen';
+import MedicineScreen from './Components/MedicineScreen';
 
 const Stack = createStackNavigator();
 
@@ -46,6 +48,16 @@ const App = () => {
         <Stack.Screen
           name="BrandIdentity"
           component={BrandIdentityScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Diagnosis"
+          component={DiagnosisScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Medicine"
+          component={MedicineScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
