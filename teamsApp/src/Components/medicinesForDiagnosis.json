@@ -1,0 +1,83 @@
+[
+    {
+        "diagnosis": "Headache",
+        "medicines": [
+            "Ibuprofen",
+            "Paracetamol",
+            "Aspirin",
+            "Naproxen"
+        ]
+    },
+    {
+        "diagnosis": "Common Cold",
+        "medicines": [
+            "Acetaminophen",
+            "Ibuprofen",
+            "Diphenhydramine",
+            "Pseudoephedrine"
+        ]
+    },
+    {
+        "diagnosis": "Fever",
+        "medicines": [
+            "Paracetamol",
+            "Ibuprofen",
+            "Aspirin",
+            "Acetaminophen"
+        ]
+    },
+    {
+        "diagnosis": "High BP",
+        "medicines": [
+            "Lisinopril",
+            "Amlodipine",
+            "Losartan",
+            "Hydrochlorothiazide"
+        ]
+    },
+    {
+        "diagnosis": "Diabetes",
+        "medicines": [
+            "Metformin",
+            "Insulin",
+            "Glimepiride",
+            "Acarbose"
+        ]
+    },
+    {
+        "diagnosis": "Anxiety",
+        "medicines": [
+            "Sertraline",
+            "Diazepam",
+            "Alprazolam",
+            "Lorazepam"
+        ]
+    },
+    {
+        "diagnosis": "Depression",
+        "medicines": [
+            "Fluoxetine",
+            "Sertraline",
+            "Citalopram",
+            "Duloxetine"
+        ]
+    },
+    {
+        "diagnosis": "Allergy",
+        "medicines": [
+            "Cetirizine",
+            "Loratadine",
+            "Diphenhydramine",
+            "Fexofenadine"
+        ]
+    },
+    {
+        "diagnosis": "Asthma",
+        "medicines": [
+            "Salbutamol",
+            "Budesonide",
+            "Fluticasone",
+            "Montelukast"
+        ]
+    }
+]

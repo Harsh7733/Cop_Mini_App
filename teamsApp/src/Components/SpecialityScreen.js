@@ -52,24 +52,21 @@ const SpecialityScreen = ({ navigation }) => {
                 <Text style={styles.heading}>What is your Speciality?</Text>
                 <Text style={styles.subheading}>You can change it later!</Text>
 
-                <ScrollView contentContainerStyle={styles.specialityList}>
+                {/* ScrollView only wraps the speciality list */}
+                <ScrollView contentContainerStyle={styles.specialityList} style={styles.scrollView}>
                     {specialities.map((speciality) => (
                         <TouchableOpacity
                             key={speciality}
-                            style={[
-                                styles.specialityItem,
-                                selectedSpecialities.includes(speciality) && styles.selected,
-                            ]}
+                            style={[styles.specialityItem, selectedSpecialities.includes(speciality) && styles.selected]}
                             onPress={() => handleSelectSpeciality(speciality)}
                         >
                             <Text style={styles.specialityText}>{speciality}</Text>
                         </TouchableOpacity>
                     ))}
+                    <TouchableOpacity style={styles.addButton} onPress={() => setIsModalVisible(true)}>
+                        <Text style={styles.addText}>+ Add Specialisation</Text>
+                    </TouchableOpacity>
                 </ScrollView>
-
-                <TouchableOpacity style={styles.addButton} onPress={() => setIsModalVisible(true)}>
-                    <Text style={styles.addText}>+ Add Specialisation</Text>
-                </TouchableOpacity>
 
                 <View style={styles.buttonContainer}>
                     <CustomButton
@@ -132,8 +129,8 @@ const styles = StyleSheet.create({
         backgroundColor: colors.addButton,
         borderRadius: 5,
         color: colors.addButton,
-        marginBottom: 20, // Adds some space between the button and the specialty list
-        marginTop: 20,
+        marginBottom: 150, // Adds some space between the button and the specialty list
+        marginTop: 0,
         padding: 10,
     },
     addText: { color: colors.addText },
@@ -188,6 +185,10 @@ const styles = StyleSheet.create({
     previousButton: {
         marginTop: 20, // Adds space between the buttons
     },
+    scrollView: {
+        flex: 1, // Allow the ScrollView to take up available space
+        width: '100%',
+    },
     selected: { backgroundColor: colors.selectedColor },
     specialityItem: {
         alignItems: 'center',
@@ -203,7 +204,7 @@ const styles = StyleSheet.create({
     },
     specialityList: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around' },
     specialityText: { color: colors.darkGrey, fontSize: 16, textAlign: 'center' },
-    subheading: { color: colors.subheading, fontSize: 16, fontWeight: 'bold', marginBottom: 20 },
+    subheading: { color: colors.subheading, fontSize: 16, fontWeight: 'bold', marginBottom: 20 }
 });
 
 export default SpecialityScreen;
